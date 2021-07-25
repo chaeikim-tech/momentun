@@ -1,81 +1,56 @@
-const toDoForm = document.querySelector(".js_toDoForm"),
-    toDoInput = toDoForm.querySelector("input"),
-    toDoList = document.querySelector(".js_toDoList");
+const toDoForm = document.getElementById("todo-form");
+const toDoInput = toDoForm.querySelector("#todo-form input");
+const toDoList = document.getElementById("todo-list");
 
-const TODOS_LS = "toDos";
+const TODOS_KEY = "todos";
 
-function filterFn(toDo) {
-    return toDo.id === 1
-
-
-}
-//filter는 마치 forEach에서 function을 실행하는것 같이 각각의 item과 같이 실행 됨.
-
-
-const toDos = [];
-
-function deleteToDo(event) {
-    const btn = event.target;
-    const li = btn.parentNode;
-    toDoList.removeChild(li);
-    const cleanToDos = toDos.filter(function (toD0) {
-        return toDo.id !== parseInt(li.id);
-        //parseInt = string -> number
-    });
-    console.log(cleanToDos);
-}
+let toDos = [];
 
 function saveToDos() {
-    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
-
-function paintToDo(text) {
-    const li = document.createElement("li");
-    const delBtn = document.createElement("button");
-    const span = document.createElement("span");
-    const newId = toDos.length + 1;
-    delBtn.innerHTML = "X";
-    delBtn.addEventListener("click", deleteToDo);
-    span.innerText = text;
-    li.appendChild(span);
-    li.appendChild(delBtn);
-    li.id = newId;
-    toDoList.appendChild(li);
-    const toDoObj = {
-        text: text,
-        id: newId
-    };
-    toDos.push(toDoObj);
+function deleteToDO(event) {
+    const li = event.target.parentElement;
+    li.remove();
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
     saveToDos();
 }
 
-function handleSubmit(event) {
+function paintToDo(newTodo) {
+    const li = document.createElement("li");
+    li.id = newTodo.id;
+    const span = document.createElement("span");
+    span.innerText = newTodo.text;
+    const button = document.createElement("button");
+    button.innerText = "X";
+    button.addEventListener("click", deleteToDO);
+    li.appendChild(span);
+    li.appendChild(button);
+    toDoList.appendChild(li);
+}
+
+
+function handleToDoSubmit(event) {
     event.preventDefault();
-    const currentValue = toDoInput.value;
-    paintToDo(currentValue);
+    const newTodo = toDoInput.value;
     toDoInput.value = "";
+    const newTodoObj = {
+        text: newTodo,
+        id: Date.now(),
+    };
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
+    saveToDos();
 }
 
-//array가 가진 forEach
-//forEach 기본적으로 함수 실행, array에 담겨진 것들을 각각 한번씩 함수를 실행해줌
+toDoForm.addEventListener("submit", handleToDoSubmit);
 
-function loadToDos() {
-    const loadedToDos = localStorage.getItem(TODOS_LS);
-    if (loadedToDos !== null) {
-        const parsedToDos = JSON.parse(loadedToDos);
-        parsedToDos.forEach(function (todo) {
-            paintToDo(toDo.text);
-        });
-    }
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if (savedToDos !== null) {
+    const parsedToDos = JSON.parse(savedToDos);
+    //parsedToDos.forEach((item) => console.log("this is the turn of ", item));
+    toDos = parsedToDos;
+    parsedToDos.forEach(paintToDo);
 }
-//toDos를 가져온 뒤, 이 라인에서 parse, 즉, 가져온것을 자바스크립트 object로 변환
-//각각에 대해서 paintToDo라는 function실행.
-//paintToDo는 위에 정의해둠
-
-function init() {
-    loadToDos();
-    toDoForm.addEventListener("submit", handleSubmit)
-}
-
-init();
