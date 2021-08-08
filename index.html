@@ -1,37 +1,62 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Momentum App</title>
-</head>
-
-<body>
-    <h2 id="clock">00:00:00</h2>
-    <form class="hidden" id="login-form">
-        <input required maxlength="15" type="text" placeholder="What is your name?" />
-        <input type="submit" value="Log In" />
-    </form>
-    <h1 class="hidden" id="greeting"></h1>
-    <form id="todo-form">
-        <input type="text" placeholder="Write a To Do and Press Enter" required />
-    </form>
-    <ul id="todo-list"></ul>
-    <div id="quote">
-        <span></span>
-        <span></span>
-    </div>
-    <div id="weather">
-        <span></span>
-        <span></span>
-    </div>
-    <script src="js/clock.js"></script>
-    <script src="js/greeting.js"></script>
-    <script src="js/quotes.js"></script>
-    <script src="js/background.js"></script>
-    <script src="js/todo.js"></script>
-    <script src="js/weather.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Momentum App</title>
+    </head>
+    
+    <body>
+        <div id="weather">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="side-menu">
+            <div class="side-munu_button fas fa-chevron-right" ></div>
+            <a href="https://www.google.com" target="_blank">
+                <i class="fab fa-google"></i>
+                Google
+            </a>
+            <a href="https://github.com" target="_blank">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+            <a href="https://www.youtube.com/" target="_blank">
+                <i class="fab fa-youtube"></i>
+                Youtube
+            </a>
+            <a href="https://stackoverflow.com/" target="_blank">
+                <i class="fab fa-stack-overflow"></i>
+                Stack-overflow
+            </a>
+        </div>
+        <div id="timeStamp">
+            <h4 id="currentDate">0000.00.00.</h4>
+            <h2 id="clock">00:00:00</h2>
+        </div>
+        <form class="hidden" id="login-form">
+            <input required maxlength="15" type="text" placeholder="What is your name?" />
+            <input type="submit" value="Log In" />
+        </form>
+        <h1 class="hidden" id="greeting"></h1>
+        <div id="todo">
+            <form id="todo-form">
+                <input type="text" placeholder="Write a To Do and Press Enter" required />
+            </form>
+            <ul id="todo-list"></ul>
+        </div>
+        <div id="quote">
+            <span></span>
+            <span></span>
+        </div>
+        <script src="js/clock.js"></script>
+        <script src="js/greeting.js"></script>
+        <script src="js/quotes.js"></script>
+        <script src="js/background.js"></script>
+        <script src="js/todo.js"></script>
+        <script src="js/weather.js"></script>
+        <script src="js/sidemenu.js"></script>
+    </body>
 </html>
