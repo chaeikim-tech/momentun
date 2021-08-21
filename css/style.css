@@ -84,7 +84,7 @@ body img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: 55vh;
   text-shadow: 1px 1px 4px #334756;
 }
 
@@ -96,7 +96,7 @@ body img {
 #greeting {
   font-size: 60px;
   font-weight: 700;
-  margin-top: -120px;
+  margin-top: -140px;
 }
 
 #greeting,
@@ -147,6 +147,10 @@ body img {
 
 #todo-list {
   font-weight: 800;
+}
+
+#todo-list li {
+  padding-bottom: 5px;
 }
 
 #todo-list button {
