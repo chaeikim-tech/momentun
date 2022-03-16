@@ -6,7 +6,7 @@ Momuntum 의 기본 기능인 ToDo List와 현재시각, 사용자 이름 설정
 
 ### Preview
 
-💡 [SITE](https://eunjukim-tech.github.io/momentun/)
+💡 [SITE](https://chaeikim-tech.github.io/momentun/)
 
 
 
