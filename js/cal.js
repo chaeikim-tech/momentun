@@ -35,24 +35,28 @@ const getValueNumber = () => {
 
 
 const setValue = (valueStr) => {
-    value.innerText = parseFloat(valueStr).toLocaleString();
-    /* if(valueStr[valueStr.length - 1] === '.'){
+    if (valueStr[valueStr.length - 1] === '.') {
         value.innerText += '.';
         return;
-    } */
+    }
+    const [wholeNum, decimalStr] = valueStr.split('.');
+    console.log(wholeNum, decimalStr);
+
+
+    value.innerText = parseFloat(valueStr).toLocaleString();
 
 };
 
 const handleNumberClick = (numStr) => {
     const currentValueStr = getValueString();
-    if(currentValueStr === '0'){
+    if (currentValueStr === '0') {
         setValue(numStr);
     } else {
         setValue(currentValueStr + numStr)
     }
 };
 
-for(let i=0; i< numberArray.length; i++){
+for (let i = 0; i < numberArray.length; i++) {
     const numberEl = numberArray[i];
     numberEl.addEventListener('click', () => {
         handleNumberClick(i.toString());
@@ -60,7 +64,7 @@ for(let i=0; i< numberArray.length; i++){
 }
 decimal.addEventListener('click', () => {
     const currentValueStr = getValueString();
-    if(!currentValueStr.include('.')){
+    if (!currentValueStr.includes('.')) {
         setValue(currentValueStr + '.');
     }
 })
@@ -74,8 +78,8 @@ const currentTime = () => {
     let currentHour = today.getHours();
     const currentMinutes = today.getMinutes();
 
-    if(currentHour > 12 ){
-        currentHour -=12;
+    if (currentHour > 12) {
+        currentHour -= 12;
     }
     hour.innerText = currentHour.toString();
     minute.innerText = currentMinutes.toString().padStart(2, '0');
