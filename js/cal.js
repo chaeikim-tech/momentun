@@ -42,6 +42,12 @@ const setValue = (valueStr) => {
     const [wholeNum, decimalStr] = valueStr.split('.');
     console.log(wholeNum, decimalStr);
 
+    if (decimalStr) {
+        value.innerText = parseFloat(wholeNum).toLocaleString() + '.' + decimalStr;
+    } else {
+        value.innerText = parseFloat(wholeNum).toLocaleString();
+    }
+
 
     value.innerText = parseFloat(valueStr).toLocaleString();
 
@@ -55,6 +61,16 @@ const handleNumberClick = (numStr) => {
         setValue(currentValueStr + numStr)
     }
 };
+
+allClear.addEventListener("click", () => {
+    setValue('0');
+});
+
+percent.addEventListener("click", () => {
+    const currentValue = getValueNumber();
+    const newValue = currentValue / 100;
+    setValue(newValue.toString());
+})
 
 for (let i = 0; i < numberArray.length; i++) {
     const numberEl = numberArray[i];
