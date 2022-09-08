@@ -3,7 +3,7 @@ const minute = document.querySelector(".minute");
 const value = document.querySelector(".value");
 
 const allClear = document.querySelector('.ac');
-const plusMinus = document.querySelector("pm");
+const plusMinus = document.querySelector(".pm");
 const percent = document.querySelector(".percent");
 
 const addition = document.querySelector('.addition');
@@ -47,10 +47,6 @@ const setValue = (valueStr) => {
     } else {
         value.innerText = parseFloat(wholeNum).toLocaleString();
     }
-
-
-    value.innerText = parseFloat(valueStr).toLocaleString();
-
 };
 
 const handleNumberClick = (numStr) => {
@@ -64,6 +60,20 @@ const handleNumberClick = (numStr) => {
 
 allClear.addEventListener("click", () => {
     setValue('0');
+});
+
+plusMinus.addEventListener("click", () => {
+    const currentValueNum = getValueNumber();
+    const currentValueStr = getValueString();
+    if( currentValueStr === '-0') {
+        setValue('0');
+        return;
+    }
+    if(currentValueNum >= 0 ){
+        setValue('-' + currentValueStr);
+    } else {
+        setValue(currentValueStr.substring(1));
+    }
 });
 
 percent.addEventListener("click", () => {
@@ -84,7 +94,6 @@ decimal.addEventListener('click', () => {
         setValue(currentValueStr + '.');
     }
 })
-
 
 
 //상단바 시계
