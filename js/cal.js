@@ -27,6 +27,10 @@ const number9 = document.querySelector('.number-9');
 
 const numberArray = [number0, number1, number2, number3, number4, number5, number6, number7, number8, number9]
 
+let valueInMemory = null;
+let operatorInMemory = null;
+
+
 const getValueString = () => value.innerText.split(',').join('');
 
 const getValueNumber = () => {
@@ -60,27 +64,88 @@ const handleNumberClick = (numStr) => {
 
 allClear.addEventListener("click", () => {
     setValue('0');
+    valueInMemory = null;
+    operatorInMemory = null;
 });
 
 plusMinus.addEventListener("click", () => {
     const currentValueNum = getValueNumber();
     const currentValueStr = getValueString();
-    if( currentValueStr === '-0') {
+    if (currentValueStr === '-0') {
         setValue('0');
         return;
     }
-    if(currentValueNum >= 0 ){
+    if (currentValueNum >= 0) {
         setValue('-' + currentValueStr);
     } else {
         setValue(currentValueStr.substring(1));
     }
 });
 
+const handleOperatorClick = (operation) => {
+    const currentValueStr = getValueString();
+    const currentValueNum = getValueNumber();
+
+    if (!valueInMemory) {
+        valueInMemory = currentValueStr;
+        operatorInMemory = operation;
+        setValue('0');
+        return;
+    }
+
+    const valueNumInMemory = parseFloat(valueInMemory);
+    let newValueNum;
+    if (operatorInMemory === 'addition') {
+        newValueNum = valueNumInMemory + currentValueNum;
+    } else if (operatorInMemory === 'subtraction') {
+        newValueNum = valueNumInMemory - currentValueNum;
+    } else if (operatorInMemory === 'multiplication') {
+        newValueNum = valueNumInMemory * currentValueNum;
+    } else if (operatorInMemory === 'division') {
+        newValueNum = valueNumInMemory / currentValueNum;
+    }
+
+    valueInMemory = newValueNum.toString();
+    operatorInMemory = operation;
+    setValue('0')
+}
+
+
 percent.addEventListener("click", () => {
     const currentValue = getValueNumber();
     const newValue = currentValue / 100;
     setValue(newValue.toString());
+    valueInMemory = null;
+    operatorInMemory = null;
 })
+
+
+//operators
+addition.addEventListener('click', () => {
+    handleOperatorClick('addition');
+});
+
+subtraction.addEventListener('click', () => {
+    handleOperatorClick('subtraction');
+});
+
+multiplication.addEventListener('click', () => {
+    handleOperatorClick('multiplication');
+})
+
+division.addEventListener('click', () => {
+    handleOperatorClick('division');
+})
+
+equal.addEventListener('click', () => {
+    if (!valueInMemory) {
+        valueInMemory = null;
+        operatorInMemory = null;
+    }
+})
+
+
+
 
 for (let i = 0; i < numberArray.length; i++) {
     const numberEl = numberArray[i];
