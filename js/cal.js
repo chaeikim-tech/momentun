@@ -82,19 +82,11 @@ plusMinus.addEventListener("click", () => {
     }
 });
 
-const handleOperatorClick = (operation) => {
-    const currentValueStr = getValueString();
+const getResultOfOperation = () => {
     const currentValueNum = getValueNumber();
-
-    if (!valueInMemory) {
-        valueInMemory = currentValueStr;
-        operatorInMemory = operation;
-        setValue('0');
-        return;
-    }
-
     const valueNumInMemory = parseFloat(valueInMemory);
     let newValueNum;
+
     if (operatorInMemory === 'addition') {
         newValueNum = valueNumInMemory + currentValueNum;
     } else if (operatorInMemory === 'subtraction') {
@@ -104,8 +96,22 @@ const handleOperatorClick = (operation) => {
     } else if (operatorInMemory === 'division') {
         newValueNum = valueNumInMemory / currentValueNum;
     }
+    return newValueNum.toString();
 
-    valueInMemory = newValueNum.toString();
+}
+
+
+const handleOperatorClick = (operation) => {
+    const currentValueStr = getValueString();
+
+    if (!valueInMemory) {
+        valueInMemory = currentValueStr;
+        operatorInMemory = operation;
+        setValue('0');
+        return;
+    }
+
+    valueInMemory = getResultOfOperation();
     operatorInMemory = operation;
     setValue('0')
 }
@@ -138,7 +144,8 @@ division.addEventListener('click', () => {
 })
 
 equal.addEventListener('click', () => {
-    if (!valueInMemory) {
+    if (valueInMemory) {
+        setValue(getResultOfOperation());
         valueInMemory = null;
         operatorInMemory = null;
     }
