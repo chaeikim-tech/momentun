@@ -1,3 +1,4 @@
+const calculator = document.querySelector(".calculator");
 const hour = document.querySelector(".hour");
 const minute = document.querySelector(".minute");
 const value = document.querySelector(".value");

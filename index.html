@@ -1,63 +1,107 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css" />
-        <title>Momentum App</title>
-    </head>
-    
-    <body>
-        <div id="weather">
-            <span></span>
-            <span></span>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <script src="https://kit.fontawesome.com/e086f222b6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/cal.css" />
+    <title>Momentum App</title>
+</head>
+
+<body>
+    <div id="weather">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="side-menu">
+        <div class="side-munu_button fas fa-chevron-right"></div>
+        <a href="https://www.google.com" target="_blank">
+            <i class="fab fa-google"></i>
+            Google
+        </a>
+        <a href="https://github.com" target="_blank">
+            <i class="fab fa-github"></i>
+            GitHub
+        </a>
+        <a href="https://www.youtube.com/" target="_blank">
+            <i class="fab fa-youtube"></i>
+            Youtube
+        </a>
+        <a href="https://stackoverflow.com/" target="_blank">
+            <i class="fab fa-stack-overflow"></i>
+            Stack-overflow
+        </a>
+        <a href="calculator.html" target="_blank">
+            <i class="fa-solid fa-calculator"></i>
+            Calculator
+        </a>
+    </div>
+    <div class="calculator">
+        <div class="top-container">
+            <div class="clock">
+                <span class="hour"></span>:<span class="minute"></span>
+            </div>
+            <div class="status">
+                <i class="fa-solid fa-signal-bars"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-three-quarters"></i>
+            </div>
         </div>
-        <div class="side-menu">
-            <div class="side-munu_button fas fa-chevron-right" ></div>
-            <a href="https://www.google.com" target="_blank">
-                <i class="fab fa-google"></i>
-                Google
-            </a>
-            <a href="https://github.com" target="_blank">
-                <i class="fab fa-github"></i>
-                GitHub
-            </a>
-            <a href="https://www.youtube.com/" target="_blank">
-                <i class="fab fa-youtube"></i>
-                Youtube
-            </a>
-            <a href="https://stackoverflow.com/" target="_blank">
-                <i class="fab fa-stack-overflow"></i>
-                Stack-overflow
-            </a>
+        <div class="value">0</div>
+        <div class="buttons-container">
+            <div class="button function ac">AC</div>
+            <div class="button function pm">±</div>
+            <div class="button function percent">%</div>
+            <div class="button operator division">÷</div>
+            <div class="button number-7">7</div>
+            <div class="button number-8">8</div>
+            <div class="button number-9">9</div>
+            <div class="button operator multiplication">×</div>
+            <div class="button number-4">4</div>
+            <div class="button number-5">5</div>
+            <div class="button number-6">6</div>
+            <div class="button operator subtraction">-</div>
+            <div class="button number-1">1</div>
+            <div class="button number-2">2</div>
+            <div class="button number-3">3</div>
+            <div class="button operator addition">+</div>
+            <div class="button number-0">0</div>
+            <div class="button decimal">.</div>
+            <div class="button operator equal">=</div>
+
+
         </div>
-        <div id="timeStamp">
-            <h4 id="currentDate">0000.00.00.</h4>
-            <h2 id="clock">00:00:00</h2>
-        </div>
-        <form class="hidden" id="login-form">
-            <input required maxlength="15" type="text" placeholder="What is your name?" />
-            <input type="submit" value="Log In" />
+    </div>
+    <div id="timeStamp">
+        <h4 id="currentDate">0000.00.00.</h4>
+        <h2 id="clock">00:00:00</h2>
+    </div>
+    <form class="hidden" id="login-form">
+        <input required maxlength="15" type="text" placeholder="What is your name?" />
+        <input type="submit" value="Log In" />
+    </form>
+    <h1 class="hidden" id="greeting"></h1>
+    <div id="todo">
+        <form id="todo-form">
+            <input type="text" placeholder="Write a To Do and Press Enter" required />
         </form>
-        <h1 class="hidden" id="greeting"></h1>
-        <div id="todo">
-            <form id="todo-form">
-                <input type="text" placeholder="Write a To Do and Press Enter" required />
-            </form>
-            <ul id="todo-list"></ul>
-        </div>
-        <div id="quote">
-            <span></span>
-            <span></span>
-        </div>
-        <script src="js/clock.js"></script>
-        <script src="js/greeting.js"></script>
-        <script src="js/quotes.js"></script>
-        <script src="js/background.js"></script>
-        <script src="js/todo.js"></script>
-        <script src="js/weather.js"></script>
-        <script src="js/sidemenu.js"></script>
-    </body>
+        <ul id="todo-list"></ul>
+    </div>
+    <div id="quote">
+        <span></span>
+        <span></span>
+    </div>
+    <script src="js/clock.js"></script>
+    <script src="js/greeting.js"></script>
+    <script src="js/quotes.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/sidemenu.js"></script>
+    <script src="js/cal.js"></script>
+</body>
+
 </html>
