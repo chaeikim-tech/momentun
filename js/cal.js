@@ -1,4 +1,6 @@
 const calculator = document.querySelector(".calculator");
+const calBtn = document.querySelector("#calculatorActive")
+
 const hour = document.querySelector(".hour");
 const minute = document.querySelector(".minute");
 const value = document.querySelector(".value");
@@ -187,3 +189,13 @@ setInterval(currentTime, 1000);
 currentTime();
 
 
+function calActive() {
+    const calClass = calculator.classList.contains("active");
+    if (!calClass) {
+        calculator.classList.add("active");
+    } else {
+        calculator.classList.remove("active");
+    }
+}
+
+calBtn.addEventListener("click", calActive);
