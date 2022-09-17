@@ -4,6 +4,8 @@
 Momuntum 의 기본 기능인 ToDo List와 현재시각, 사용자 이름 설정 및 날씨 기능을 구현하고, <br>
 사이드 메뉴가 Click 이벤트로 인해 슬라이드 하는 기능을 추가 하였습니다. 
 
++ 사이드 메뉴에 계산기 탭을 추가하여 Javascript로 구현한 계산기를 사용 할 수 있습니다.
+
 ### Preview
 
 💡 [SITE](https://chaeikim-tech.github.io/momentun/)
@@ -29,5 +31,6 @@ Momuntum 의 기본 기능인 ToDo List와 현재시각, 사용자 이름 설정
 * Math.random 함수를 이용하여 배경화면과 인용구가 랜덤으로 나오게 적용.
 * Local에서 User name을 기억하게 localStorage에 저장.
 * side Menu가 click 이벤트에 의하여 slide 될 수 있게 class를 추가하고 삭제되도록 설정.
+* Javascript로 만든 계산기를 추가.
 
 
