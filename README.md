@@ -12,7 +12,7 @@ Momuntum 의 기본 기능인 ToDo List와 현재시각, 사용자 이름 설정
 
 
 
-![mainscreen](/img/mainscreen.png)
+![mainscreen](/img/mainscreen.jpg)
 
 
 ### Pages
